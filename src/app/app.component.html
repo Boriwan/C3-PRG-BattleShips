@@ -2,8 +2,8 @@
   <h1>🌊Battleships🚤</h1>
 
   <div>
-    <h2 *ngIf="start == true">Score: {{this.score}}</h2>
-    <h3 *ngIf="start == true">Ships remaining: {{this.remaining}}</h3>
+    <h2 *ngIf="start == true">Score: {{score}}</h2>
+    <h3 *ngIf="start == true">Ships remaining: {{remaining}}</h3>
   </div>
 </div>
 
@@ -15,8 +15,8 @@
 </div>
 
 <div *ngIf="start == true && end == false" class="d-flex flex-row flex-wrap justify-content-around bg-light mt- cards-center">
-  <div *ngFor="let card of slicedArr" class="border m-2  card emoji-center text-center" (click)="show(card)" style="cursor: pointer; height: 200px; width: 200px; font-size: 50px;">
-    <span *ngIf="card.state">{{card.icon}}</span>
+  <div *ngFor="let cor of slicedArr" class="border m-2  card emoji-center text-center" (click)="show(cor)" style="cursor: pointer; height: 200px; width: 200px; font-size: 50px;">
+    <span *ngIf="cor.state">{{cor.icon}}</span>
   </div>
 </div>
 
@@ -27,3 +27,6 @@
   </div>
 </div>
 
+<div class="footer">
+  <p>Author: Boris Boček</p>
+</div>
