@@ -1,0 +1,32 @@
+.cards-center {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+
+.emoji-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.correct {
+  border: 3px solid lawngreen;
+}
+
+.start-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+}
+
+.card {
+  background-color:  #b3ffff;
+}
+
+.card:hover {
+  transition: 0.2s;
+  background-color:  #e6ffff;
+}
