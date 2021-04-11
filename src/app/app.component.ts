@@ -37,7 +37,7 @@ export class AppComponent {
     {icon: '🌊', isWater: true, state: false}
   ];
 
-  savedClick: Grid | null = null;
+  savedState: Grid | null = null;
   start = false;
   end = false;
   slicedArr!: Grid[];
@@ -60,25 +60,25 @@ export class AppComponent {
     this.slicedArr = this.slicedArr.sort(() => Math.random() - 0.5);
   }
 
-  show(clickPoint: Grid): void {
-    if (clickPoint.state) {
+  show(revealed: Grid): void {
+    if (revealed.state) {
       return;
     }
 
-    if (this.savedClick === null) {
-      clickPoint.state = true;
-      if (!clickPoint.isWater) {
+    if (this.savedState === null) {
+      revealed.state = true;
+      if (!revealed.isWater) {
         this.score++;
         this.remaining--;
       }
 
       // devides the current score by 2 and rounds it up, if you click on water
-      if (clickPoint.isWater) {
+      if (revealed.isWater) {
         this.score = Math.round(this.score / 2);
       }
     }
     else {
-      clickPoint.state = clickPoint.isWater;
+      revealed.state = revealed.isWater;
    }
 
     // check if all boats are revealed
