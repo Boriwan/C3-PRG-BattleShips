@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import {LogicService} from './services/logic.service';
+import {FieldValue, Game} from './game-interface';
 
 
-export interface Grid {
+ /*
+  export interface Grid {
   icon: string;
   isWater: boolean;
   state: boolean;
 }
+*/
 
 @Component({
   selector: 'app-root',
@@ -16,12 +19,10 @@ export interface Grid {
 export class AppComponent {
   title = 'BattleShips';
 
-  constructor(public logicS: LogicService) {
-  }
-
-
-
-
+  game = new Game();
+  water = FieldValue.WATER;
+  ship = FieldValue.SHIP;
+  hidden = FieldValue.HIDDEN;
 
 
 
@@ -99,6 +100,12 @@ export class AppComponent {
       console.log(this.end);
     }
   }
+
+
+
+
+
+   */
 /*
   clickPoint!: Grid;
   start = false;

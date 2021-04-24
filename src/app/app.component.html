@@ -2,28 +2,24 @@
   <h1>🌊Battleships🚤</h1>
 
   <div>
-    <h2 *ngIf="start == true">Score: {{score}}</h2>
-    <h3 *ngIf="start == true">Ships remaining: {{remaining}}</h3>
+    <h2 *ngIf="game.startGame == true">Score: {{game.score}}</h2>
+    <h3 *ngIf="game.startGame == true">Ships remaining: {{game.remaining}}</h3>
   </div>
 </div>
 
-<div  *ngIf="start == false" class="text-center p-2">
-  <h5> Press Start to play</h5>
-    <div class="start-button">
-      <button class="btn btn-info" type="submit" (click)="startGame()">Start</button>
-    </div>
-</div>
 
-<div *ngIf="start == true && end == false" class="d-flex flex-row flex-wrap justify-content-around bg-light mt- cards-center">
-  <div *ngFor="let cor of slicedArr" class="border m-2  card emoji-center text-center" (click)="show(cor)" style="cursor: pointer; height: 200px; width: 200px; font-size: 50px;">
-    <span *ngIf="cor.state">{{cor.icon}}</span>
+<div *ngIf="game.startGame == true && game.endGame == false" class="d-flex flex-row flex-wrap justify-content-around bg-light mt- cards-center">
+  <div *ngFor="let cor of game.randomizedGrid" class="border m-2  card emoji-center text-center" (click)="game.shoot(cor)" style="cursor: pointer; height: 200px; width: 200px; font-size: 50px;">
+    <span *ngIf="ship">🚤</span>
+    <span *ngIf="water">🌊</span>
+    <span *ngIf="hidden"></span>
   </div>
 </div>
 
-<div *ngIf="end == true" class="text-center">
+<div *ngIf="game.endGame == true" class="text-center">
   <h1>You won!</h1>
   <div class="start-button">
-    <button class="btn btn-info" type="submit" (click)="startGame()">Play again</button>
+    <button class="btn btn-info" type="submit" (click)="game.restartGame()">Play again</button>
   </div>
 </div>
 

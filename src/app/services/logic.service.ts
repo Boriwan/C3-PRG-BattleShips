@@ -1,7 +1,4 @@
-// @ts-ignore
-
 import { Injectable } from '@angular/core';
-import {IGame} from '../game-interface';
 
 /*
 export interface Grid {
@@ -16,9 +13,6 @@ export interface Grid {
 })
 export class LogicService {
 
-  generate(): IGame {
-    throw new Error('You should implement this');
-  }
 
 /*
   arr: Grid[] = [
