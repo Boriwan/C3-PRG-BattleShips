@@ -9,10 +9,10 @@
 
 
 <div *ngIf="game.startGame == true && game.endGame == false" class="d-flex flex-row flex-wrap justify-content-around bg-light mt- cards-center">
-  <div *ngFor="let cor of game.randomizedGrid" class="border m-2  card emoji-center text-center" (click)="game.shoot(cor)" style="cursor: pointer; height: 200px; width: 200px; font-size: 50px;">
-    <span *ngIf="ship">🚤</span>
-    <span *ngIf="water">🌊</span>
-    <span *ngIf="hidden"></span>
+  <div *ngFor="let cor of game.grid" class="border m-2  card emoji-center text-center" (click)="game.shoot(cor)" style="cursor: pointer; height: 200px; width: 200px; font-size: 50px;">
+    <span *ngIf="cor.getFieldValue() == water">🌊</span>
+    <span *ngIf="cor.getFieldValue() == ship">🚤</span>
+    <span *ngIf="cor.getFieldValue() == hidden"></span>
   </div>
 </div>
 

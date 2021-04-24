@@ -3,7 +3,7 @@ export enum FieldValue {
 }
 
 export interface IField {
-  getState(): FieldValue;
+  getFieldValue(): FieldValue;
 }
 
 class State implements IField {
@@ -14,7 +14,7 @@ class State implements IField {
     this.ship = ship;
   }
 
-  getState(): FieldValue {
+  getFieldValue(): FieldValue {
     if (!this.revealed) {
       return FieldValue.HIDDEN;
     }
@@ -33,19 +33,23 @@ export class Game {
   startGame = true;
   endGame = false;
 
-  readonly grid: State[] = [
+   grid: State[] = [
+    new State(false),
+    new State(true),
+    new State(false),
+    new State(false),
+    new State(false),
+    new State(true),
+    new State(true),
+    new State(false),
     new State(false),
     new State(true),
     new State(false),
     new State(true),
     new State(false),
     new State(true),
-    new State(true),
     new State(false),
     new State(false),
-    new State(true),
-    new State(false),
-    new State(true),
     new State(false),
     new State(true),
     new State(false),
@@ -58,17 +62,24 @@ export class Game {
   getRandomField(): IField[] {
     this.randomizedGrid = this.grid.slice(0, this.grid.length);
     this.randomizedGrid = this.randomizedGrid.sort(() => Math.random() - 0.5);
-    console.log(this.randomizedGrid);
     return this.randomizedGrid;
   }
 
   shoot(shot: IField): void {
-    (shot as State).revealed = true;
-    if ((shot as State).ship) {
+    const shotState = shot as State;
+
+    if (shotState.revealed) {
+      return;
+    }
+    shotState.revealed = true;
+
+    if (shotState.ship) {
       this.score++;
       this.remaining--;
+      console.log(this.score);
+      console.log(this.remaining);
     }
-    if (!(shot as State).ship) {
+    if (!shotState.ship) {
       this.score = Math.round(this.score / 2);
     }
     if (this.remaining === 0) {
@@ -78,9 +89,15 @@ export class Game {
   }
 
   restartGame(): void {
-    this.score = 0;
-    this.remaining = 8;
     this.startGame = true;
     this.endGame = false;
+
+    // resets the game field
+    this.grid.forEach(item => {
+      item.revealed = false;
+    });
+    this.remaining = 8;
+    this.score = 0;
+    //
   }
 }
