@@ -19,6 +19,17 @@ export class AppComponent {
   constructor(public logicS: LogicService) {
   }
 
+
+
+
+
+
+
+
+
+
+
+  /*
   arr: Grid[] = [
     {icon: '🚤', isWater: false, state: false},
     {icon: '🌊', isWater: true, state: false},
