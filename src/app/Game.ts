@@ -1,61 +1,35 @@
-export enum FieldValue {
-  WATER, SHIP, HIDDEN
-}
-
-export interface IField {
-  getFieldValue(): FieldValue;
-}
-
-class State implements IField {
-  revealed = false;
-  ship: boolean;
-
-  constructor(ship: boolean) {
-    this.ship = ship;
-  }
-
-  getFieldValue(): FieldValue {
-    if (!this.revealed) {
-      return FieldValue.HIDDEN;
-    }
-    if (this.ship) {
-      return FieldValue.SHIP;
-    }
-    else {
-      return FieldValue.WATER;
-    }
-  }
-}
+import {IField, State} from './IField';
 
 export class Game {
   score = 0;
-  remaining = 8;
+  remaining = 7;
   startGame = true;
   endGame = false;
 
    grid: State[] = [
-    new State(false),
     new State(true),
-    new State(false),
-    new State(false),
-    new State(false),
-    new State(true),
-    new State(true),
-    new State(false),
-    new State(false),
-    new State(true),
-    new State(false),
-    new State(true),
-    new State(false),
     new State(true),
     new State(false),
     new State(false),
     new State(false),
     new State(true),
+    new State(true),
+    new State(false),
+    new State(false),
+    new State(true),
+    new State(false),
+    new State(true),
+    new State(false),
+    new State(true),
+    new State(false),
+    new State(false),
     new State(false),
     new State(true)
   ];
 
+  /**
+   * // TODO: shuffle
+   */
 /*
   randomizedGrid!: IField[];
 

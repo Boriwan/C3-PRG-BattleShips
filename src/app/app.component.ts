@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {FieldValue, Game} from './Game';
+import {Game} from './Game';
+import {FieldValue} from './field_value.enum';
 
 @Component({
   selector: 'app-root',
