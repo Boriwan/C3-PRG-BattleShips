@@ -56,14 +56,14 @@ export class Game {
     new State(true)
   ];
 
-
+/*
   randomizedGrid!: IField[];
 
   getRandomField(): IField[] {
     this.randomizedGrid = this.grid.slice(0, this.grid.length);
     this.randomizedGrid = this.randomizedGrid.sort(() => Math.random() - 0.5);
     return this.randomizedGrid;
-  }
+  }*/
 
   shoot(shot: IField): void {
     const shotState = shot as State;
